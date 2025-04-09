@@ -7,10 +7,68 @@
   <title>xhlazz's Shop</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Additional styles for enhancements */
+    /* Modernized and Animated Styles */
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    header h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #fff;
+      text-shadow: 0 0 10px #007bff, 0 0 20px #007bff;
+    }
+
+    .donation-button {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .donation-button a {
+      padding: 10px 20px;
+      border-radius: 5px;
+      background: linear-gradient(45deg, #007bff, #0056b3);
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .donation-button a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #007bff;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .categories button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: linear-gradient(45deg, #444, #222);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .categories button.active {
+      background: linear-gradient(45deg, #007bff, #0056b3);
+      color: #fff;
+      box-shadow: 0 0 10px #007bff;
+    }
+
+    .categories button:hover {
+      background: linear-gradient(45deg, #666, #444);
+      transform: scale(1.1);
     }
 
     .ugc-container {
@@ -18,82 +76,54 @@
       overflow-x: auto;
       gap: 20px;
       padding: 10px;
-      border: 1px solid #ccc;
       border-radius: 8px;
-      background-color: #f9f9f9;
       margin-top: 20px;
-      scroll-behavior: smooth; /* For smooth scrolling */
+      scroll-behavior: smooth;
     }
 
     .ugc-item {
       flex: 0 0 auto;
       width: 200px;
       text-align: center;
-      border: 2px solid #fff;
-      border-radius: 8px;
-      padding: 10px;
-      background-color: #000; /* Black background for contrast */
-      color: #fff; /* Make text white */
-      text-shadow: 0 0 5px #fff, 0 0 10px #fff; /* Neon effect */
-      box-shadow: 0 0 10px #fff, 0 0 20px #fff; /* Neon outline */
+      border-radius: 15px;
+      overflow: hidden;
+      background: #1e1e1e;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
 
     .ugc-item img {
-      max-width: 100%;
-      border-radius: 4px;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .ugc-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .ugc-item:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 0 15px #007bff;
     }
 
     .ugc-price {
-      margin-top: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 5px;
-      font-size: 16px; /* Ensure text is visible */
-      color: #fff; /* White text for visibility */
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      padding: 10px;
+      background: linear-gradient(45deg, #2c2c2c, #1a1a1a);
     }
 
     .ugc-price img {
       width: 20px;
       height: 20px;
-    }
-
-    .ugc-link {
-      display: block;
-      margin-top: 10px;
-      text-decoration: none;
-      color: #007bff;
-      font-weight: bold;
-    }
-
-    .ugc-link:hover {
-      text-decoration: underline;
-    }
-
-    .categories {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .categories button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background-color: #000;
-      color: #fff;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .categories button.active {
-      background-color: #007bff; /* Highlight active category */
-      color: #fff;
-    }
-
-    .categories button:hover {
-      background-color: #0056b3;
     }
   </style>
 </head>
@@ -142,6 +172,7 @@
       items.forEach(item => {
         const ugcItem = document.createElement('div');
         ugcItem.className = 'ugc-item';
+        ugcItem.onclick = () => window.open(item.url, '_blank'); // Make entire item clickable
 
         ugcItem.innerHTML = `
           <img src="${item.photo}" alt="UGC Item">
@@ -149,7 +180,6 @@
             <span>${item.price}</span>
             <img src="${robuxImage}" alt="Robux">
           </div>
-          <a class="ugc-link" href="${item.url}" target="_blank">View Item</a>
         `;
 
         ugcContainer.appendChild(ugcItem);
