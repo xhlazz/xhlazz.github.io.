@@ -2,8 +2,8 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: url('images/background.jpg') no-repeat center center fixed;
-  background-size: cover;
+  background: black;
+  color: white;
   overflow-x: hidden;
 }
 
@@ -39,4 +39,32 @@ header h1 {
 
 .donation-button a:hover {
   background-color: #e63e00;
+}
+
+/* Category Buttons */
+.categories {
+  position: fixed;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.categories button {
+  background-color: #282828;
+  color: white;
+  border: 2px solid white;
+  padding: 10px 15px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.categories button:hover {
+  background-color: #00ffff;
+  border-color: #00ffff;
+  color: black;
 }
