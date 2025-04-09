@@ -4,11 +4,10 @@ body {
   font-family: Arial, sans-serif;
   background: url('images/background.jpg') no-repeat center center fixed;
   background-size: cover;
-  color: #333;
   overflow-x: hidden;
 }
 
-/* Header Text - Neon Effect */
+/* Neon Text Effect */
 header h1 {
   position: fixed;
   top: 10px;
@@ -18,7 +17,7 @@ header h1 {
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff;
   z-index: 1000;
 }
 
@@ -40,84 +39,4 @@ header h1 {
 
 .donation-button a:hover {
   background-color: #e63e00;
-}
-
-/* Header */
-header {
-  text-align: center;
-  padding: 20px;
-  background-color: rgba(0, 0, 0, 0.7); /* Transparent background */
-  color: white;
-}
-
-header p {
-  margin: 10px 0 0;
-}
-
-/* Gallery Section */
-.gallery {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 100px auto; /* Leaves space for the fixed header */
-}
-
-.gallery h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: white;
-  text-shadow: 0 0 3px #fff;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.gallery-item {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  text-align: center;
-  padding: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.gallery-item img {
-  max-width: 100%;
-  border-radius: 5px;
-}
-
-.gallery-item h3 {
-  margin: 10px 0;
-}
-
-.gallery-item p {
-  margin: 5px 0;
-}
-
-.buy-button {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 15px;
-  background-color: #28a745;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-}
-
-.buy-button:hover {
-  background-color: #218838;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0.7); /* Transparent background */
-  color: white;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
