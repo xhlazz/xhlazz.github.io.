@@ -5,6 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>xhlazz's Shop</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Additional styles for UGC scrolling section */
+    .ugc-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      margin-top: 20px;
+    }
+
+    .ugc-item {
+      flex: 0 0 auto;
+      width: 200px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    .ugc-item img {
+      max-width: 100%;
+      border-radius: 4px;
+    }
+
+    .ugc-price {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .ugc-price img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .ugc-link {
+      display: block;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    .ugc-link:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
   <!-- Neon White Text -->
@@ -23,5 +76,41 @@
     <button id="clothes-button">Clothes</button>
     <button id="newest-button">Newest</button>
   </div>
+
+  <!-- UGC Scrolling Section -->
+  <div class="ugc-container" id="ugcContainer">
+    <!-- UGC items will be dynamically added here -->
+  </div>
+
+  <script>
+    const ugcItems = [
+      {
+        photo: "https://tr.rbxcdn.com/180DAY-e63c3aa62e2cef7dff846855b1d45875/420/420/Hat/Webp/noFilter",
+        url: "https://www.roblox.com/catalog/130805199352449/Gojo-Hair-3D",
+        price: "70-80"
+      },
+      // Add more items here
+    ];
+
+    const robuxImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/941px-Robux_2019_Logo_gold.svg.png";
+
+    const ugcContainer = document.getElementById('ugcContainer');
+
+    ugcItems.forEach(item => {
+      const ugcItem = document.createElement('div');
+      ugcItem.className = 'ugc-item';
+
+      ugcItem.innerHTML = `
+        <img src="${item.photo}" alt="UGC Item">
+        <div class="ugc-price">
+          <span>${item.price}</span>
+          <img src="${robuxImage}" alt="Robux">
+        </div>
+        <a class="ugc-link" href="${item.url}" target="_blank">View Item</a>
+      `;
+
+      ugcContainer.appendChild(ugcItem);
+    });
+  </script>
 </body>
 </html>
