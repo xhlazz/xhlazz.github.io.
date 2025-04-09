@@ -91,6 +91,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      position: relative;
     }
 
     .ugc-item img {
@@ -107,6 +108,18 @@
     .ugc-item:hover {
       transform: scale(1.1);
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 0 15px #007bff;
+    }
+
+    .ugc-title {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .ugc-date {
+      font-size: 0.9rem;
+      color: #aaa;
     }
 
     .ugc-price {
@@ -156,9 +169,17 @@
       {
         photo: "https://tr.rbxcdn.com/180DAY-e63c3aa62e2cef7dff846855b1d45875/420/420/Hat/Webp/noFilter",
         url: "https://www.roblox.com/catalog/130805199352449/Gojo-Hair-3D",
+        name: "Gojo Hair 3D",
+        date: "Created 2/13/2025",
         price: "70-80"
       },
-      // Add more items here
+      {
+        photo: "https://tr.rbxcdn.com/180DAY-91fa02bf2826332ccbe0780384d43955/420/420/Hat/Webp/noFilter",
+        url: "https://www.roblox.com/catalog/93435176769828/Gojo-Blowing-Blue-Eyes-Face",
+        name: "Gojo Blowing Blue Eyes Face",
+        date: "Created 2/13/2025",
+        price: "105"
+      }
     ];
 
     const robuxImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/941px-Robux_2019_Logo_gold.svg.png";
@@ -176,11 +197,21 @@
 
         ugcItem.innerHTML = `
           <img src="${item.photo}" alt="UGC Item">
+          <div class="ugc-title">${item.name}</div>
+          <div class="ugc-date">${item.date}</div>
           <div class="ugc-price">
             <span>${item.price}</span>
             <img src="${robuxImage}" alt="Robux">
           </div>
         `;
+
+        // Disable scrolling when hovering over an item
+        ugcItem.addEventListener('mouseenter', () => {
+          ugcContainer.style.overflow = 'hidden';
+        });
+        ugcItem.addEventListener('mouseleave', () => {
+          ugcContainer.style.overflow = 'auto';
+        });
 
         ugcContainer.appendChild(ugcItem);
       });
