@@ -171,14 +171,32 @@
         url: "https://www.roblox.com/catalog/130805199352449/Gojo-Hair-3D",
         name: "Gojo Hair 3D",
         date: "Created 2/13/2025",
-        price: "70-80"
+        price: "70-80",
+        category: "UGC"
       },
       {
         photo: "https://tr.rbxcdn.com/180DAY-91fa02bf2826332ccbe0780384d43955/420/420/Hat/Webp/noFilter",
         url: "https://www.roblox.com/catalog/93435176769828/Gojo-Blowing-Blue-Eyes-Face",
         name: "Gojo Blowing Blue Eyes Face",
         date: "Created 4/8/2025",
-        price: "105"
+        price: "105",
+        category: "UGC, Newest"
+      },
+      {
+        photo: "https://tr.rbxcdn.com/180DAY-ca6da7c541008d23ad6b2504068c6555/150/150/Shirt/Webp/noFilter",
+        url: "https://www.roblox.com/catalog/85104545059507/Young-Saturo",
+        name: "Young Saturo",
+        date: "Apr 02, 2025",
+        price: "7",
+        category: "Clothes, Newest"
+      },
+      {
+        photo: "https://tr.rbxcdn.com/180DAY-98234471290ff3afb714800df88cf505/150/150/Pants/Webp/noFilter",
+        url: "https://www.roblox.com/catalog/113798678815577/Young-Gojo-Pants",
+        name: "Young Gojo Pants",
+        date: "Apr 02, 2025",
+        price: "7",
+        category: "Clothes, Newest"
       }
     ];
 
@@ -193,7 +211,7 @@
       items.forEach(item => {
         const ugcItem = document.createElement('div');
         ugcItem.className = 'ugc-item';
-        ugcItem.onclick = () => window.open(item.url, '_blank'); // Make entire item clickable
+        ugcItem.onclick = () => window.open(item.url, '_blank');
 
         ugcItem.innerHTML = `
           <img src="${item.photo}" alt="UGC Item">
@@ -217,6 +235,12 @@
       });
     }
 
+    // Filter items by category
+    function filterItemsByCategory(category) {
+      const filteredItems = ugcItems.filter(item => item.category.includes(category));
+      displayItems(filteredItems);
+    }
+
     // Highlight active category
     function highlightCategory(button) {
       categories.forEach(btn => btn.classList.remove('active'));
@@ -228,18 +252,14 @@
       button.addEventListener('click', () => {
         highlightCategory(button);
         const categoryId = button.id;
-
-        if (categoryId === 'ugc-button') {
-          displayItems(ugcItems); // Default to UGC items
-        } else {
-          // Add logic for other categories if needed
-          ugcContainer.innerHTML = `<p>No items available for this category.</p>`;
-        }
+        if (categoryId === 'ugc-button') filterItemsByCategory('UGC');
+        if (categoryId === 'clothes-button') filterItemsByCategory('Clothes');
+        if (categoryId === 'newest-button') filterItemsByCategory('Newest');
       });
     });
 
     // Default category (UGC)
-    displayItems(ugcItems);
+    filterItemsByCategory('UGC');
   </script>
 </body>
 
