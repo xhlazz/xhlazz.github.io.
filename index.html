@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>xhlazz's Shop</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Additional styles for UGC scrolling section */
+    /* Additional styles for enhancements */
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
     .ugc-container {
       display: flex;
       overflow-x: auto;
@@ -16,16 +22,20 @@
       border-radius: 8px;
       background-color: #f9f9f9;
       margin-top: 20px;
+      scroll-behavior: smooth; /* For smooth scrolling */
     }
 
     .ugc-item {
       flex: 0 0 auto;
       width: 200px;
       text-align: center;
-      border: 1px solid #ddd;
+      border: 2px solid #fff;
       border-radius: 8px;
       padding: 10px;
-      background-color: #fff;
+      background-color: #000; /* Black background for contrast */
+      color: #fff; /* Make text white */
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff; /* Neon effect */
+      box-shadow: 0 0 10px #fff, 0 0 20px #fff; /* Neon outline */
     }
 
     .ugc-item img {
@@ -39,6 +49,8 @@
       align-items: center;
       justify-content: center;
       gap: 5px;
+      font-size: 16px; /* Ensure text is visible */
+      color: #fff; /* White text for visibility */
     }
 
     .ugc-price img {
@@ -57,8 +69,35 @@
     .ugc-link:hover {
       text-decoration: underline;
     }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .categories button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #000;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .categories button.active {
+      background-color: #007bff; /* Highlight active category */
+      color: #fff;
+    }
+
+    .categories button:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
+
 <body>
   <!-- Neon White Text -->
   <header>
@@ -72,7 +111,7 @@
 
   <!-- Category Section -->
   <div class="categories">
-    <button id="ugc-button">UGC</button>
+    <button id="ugc-button" class="active">UGC</button>
     <button id="clothes-button">Clothes</button>
     <button id="newest-button">Newest</button>
   </div>
@@ -95,22 +134,52 @@
     const robuxImage = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Robux_2019_Logo_gold.svg/941px-Robux_2019_Logo_gold.svg.png";
 
     const ugcContainer = document.getElementById('ugcContainer');
+    const categories = document.querySelectorAll('.categories button');
 
-    ugcItems.forEach(item => {
-      const ugcItem = document.createElement('div');
-      ugcItem.className = 'ugc-item';
+    // Populate UGC items
+    function displayItems(items) {
+      ugcContainer.innerHTML = '';
+      items.forEach(item => {
+        const ugcItem = document.createElement('div');
+        ugcItem.className = 'ugc-item';
 
-      ugcItem.innerHTML = `
-        <img src="${item.photo}" alt="UGC Item">
-        <div class="ugc-price">
-          <span>${item.price}</span>
-          <img src="${robuxImage}" alt="Robux">
-        </div>
-        <a class="ugc-link" href="${item.url}" target="_blank">View Item</a>
-      `;
+        ugcItem.innerHTML = `
+          <img src="${item.photo}" alt="UGC Item">
+          <div class="ugc-price">
+            <span>${item.price}</span>
+            <img src="${robuxImage}" alt="Robux">
+          </div>
+          <a class="ugc-link" href="${item.url}" target="_blank">View Item</a>
+        `;
 
-      ugcContainer.appendChild(ugcItem);
+        ugcContainer.appendChild(ugcItem);
+      });
+    }
+
+    // Highlight active category
+    function highlightCategory(button) {
+      categories.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+    }
+
+    // Add event listeners for categories
+    categories.forEach(button => {
+      button.addEventListener('click', () => {
+        highlightCategory(button);
+        const categoryId = button.id;
+
+        if (categoryId === 'ugc-button') {
+          displayItems(ugcItems); // Default to UGC items
+        } else {
+          // Add logic for other categories if needed
+          ugcContainer.innerHTML = `<p>No items available for this category.</p>`;
+        }
+      });
     });
+
+    // Default category (UGC)
+    displayItems(ugcItems);
   </script>
 </body>
+
 </html>
