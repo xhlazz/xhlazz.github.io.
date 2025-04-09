@@ -1,0 +1,109 @@
+/* General Reset */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Donation Button */
+.donation-button {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+.donation-button a {
+  background-color: #ff4500;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.donation-button a:hover {
+  background-color: #e63e00;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 20px;
+  background-color: #24292e;
+  color: white;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header p {
+  margin: 10px 0 0;
+}
+
+/* Gallery Section */
+.gallery {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.gallery-item h3 {
+  margin: 10px 0;
+}
+
+.gallery-item p {
+  margin: 5px 0;
+}
+
+.buy-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.buy-button:hover {
+  background-color: #218838;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #24292e;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
